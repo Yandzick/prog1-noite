@@ -1,0 +1,105 @@
+//Nome: Natan Lopes Siqueira Campos
+//Matrícula:0050014798
+#include <stdio.h>
+#include<string.h>
+#include <time.h>
+
+
+main(){
+    int i, a, qts_acertou=0, qts_errou = 0;
+    char fim = 0;
+    char letra, b, achei;
+    char palavra_chute[20], palavra[20];
+    char *p[] = {"futebol", "trave", "bola", "escola", "professor"};
+
+    srand(time(NULL));
+    a =(rand()%5);
+
+        strcpy(palavra, p[a]);
+        for (i=0; i<strlen(palavra);i++)
+                palavra_chute[i] = ' ';
+        do{
+            system("cls");
+            printf("             FORCA              \n");
+            printf("_______________\n\n");
+            printf("\nTente nao ser enforcado!!! \n\n");
+
+            for(i=0; i<strlen(palavra);i++)
+                printf(" %c ", palavra_chute[i]);
+            printf("\n");
+
+            for(i=0; i<strlen(palavra);i++)
+                printf("____ ");
+            printf("\n");
+
+            printf("\n\nPode errar: %d - Acertadas: %d\n", 6-qts_errou, qts_acertou);
+            switch(qts_errou)
+		{
+			case 6:
+			printf("  %c", 35);
+			printf("\n");
+			printf("%c", 45);
+		    printf(" %c", 124);
+		    printf("%c", 45);
+		    printf("\n");
+		    printf("%c", 47);
+		    printf("  %c", 92);
+		    break;	
+		  case 5:
+		    printf("%c", 45);
+		    printf(" %c", 124);
+		    printf("%c", 45);
+		    printf("\n");
+		    printf("%c", 47);
+		    printf("  %c", 92);
+		    break;
+		  case 4:
+		    printf(" %c", 124);
+		    printf("%c", 45);
+		    printf("\n");
+		    printf("%c", 47);
+		    printf("  %c", 92);
+		    break;
+		  case 3:
+		    printf("%c", 45);
+		    printf("\n");
+		    printf("%c", 47);
+		    printf("  %c", 92);
+		    break;
+		  case 2:
+		    printf("%c", 47);
+		    printf("  %c", 92);
+		    break;
+		  case 1:
+		   printf("  %c", 92);
+		    break;
+		  }
+            printf("\n_______________\n\n");
+            printf("\n\nDigite uma letra (Ou *, para sair): ");
+            scanf("%c",&letra);
+            scanf("%c",&b);
+
+            achei = 0;
+            for (i=0; i<strlen(palavra); i++){
+                if (palavra[i] == letra){
+                    palavra_chute[i] = letra;
+                    qts_acertou++;
+                    achei = 1;
+                }
+            }
+            if (achei == 0)
+                qts_errou++;
+
+            if (qts_errou == 7 || letra == '*')
+			{
+                printf("GAME OVER!!\n\n");
+                fim = 1;
+            }
+            if (qts_acertou == strlen(palavra))
+			{
+                printf("PARABENS! VOCE GANHOU!!\n\n");
+                fim = 1;
+            }
+        }while (fim==0);
+    return 0;
+}
